@@ -6,6 +6,7 @@ Vending Machine API implementation for the MVP Match backend assignment.
 ```sh
 mkdir vending-machine && cd vending-machine
 git init
+git remote add origin git@github.com:erincar/vending-machine.git
 touch README.md
 touch .gitignore
 poetry init
