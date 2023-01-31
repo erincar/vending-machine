@@ -21,4 +21,6 @@ poetry run isort --profile=black --profile=django $API_DIRECTORY
 poetry run autoflake \
     --remove-all-unused-imports --recursive --remove-unused-variables \
     --in-place $API_DIRECTORY --exclude=__init__.py
-poetry run flake8 $API_DIRECTORY
+poetry run flake8 \
+    --max-line-length 79 --extend-ignore=E203 \
+    $API_DIRECTORY

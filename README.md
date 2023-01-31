@@ -23,9 +23,13 @@ python manage.py createsuperuser --username=admin --email=admin@example.com
 
 ## Functionality
 - [x] Add app
-- [ ] Add models: VendingMachineUser, Product
-- [ ] Add urls: admin, auth, users, products
+- [x] Add models: VendingMachineUser, Product
 - [ ] Add views: VendingMachineUserView, ProductView
+- [ ] Add urls: admin, auth, users, products
+- [ ] Base model for timestamping
+- [ ] UUID primary keys
+- [ ] Run translations
+- [ ] Add tests
 
 ## Developer
 - [x] Add `check-all` script running all linter/formatters
@@ -33,6 +37,7 @@ python manage.py createsuperuser --username=admin --email=admin@example.com
 - [ ] Fix errors & Enable mypy check
 - [ ] Project high-level documentation
 - [ ] Git workflows, Git <--> CI/CD Integration
+- [ ] Handle secret keys, Application security
 
 ## Deployment
 - [ ] Proper database
