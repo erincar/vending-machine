@@ -1,3 +1,6 @@
+# `vending-machine`
+Vending Machine API implementation for the MVP Match backend assignment.
+
 # Command Log
 
 ```sh
@@ -10,10 +13,63 @@ poetry add django djangorestframework
 poetry add -G dev mypy black isort autoflake flake8 ipython
 poetry run django-admin startproject api .
 {cd api && poetry run django-admin startapp vending_machine}
+poetry run python manage.py runserver migrate
 poetry run python manage.py runserver 0.0.0.0:8000
+python manage.py createsuperuser --username=admin --email=admin@example.com
 ```
+
 # TODO
 
+## Functionality
 - [ ] Add app
+- [ ] Add models: VendingMachineUser, Product
 - [ ] Add urls: admin, auth, users, products
 - [ ] Add views: VendingMachineUserView, ProductView
+
+## Developer
+- [x] Add `check-all` script running all linter/formatters
+- [ ] Add check-all as a poetry command
+- [ ] Fix errors & Enable mypy check
+- [ ] Project high-level documentation
+
+## Deployment
+- [ ] Proper database
+- [ ] Multiple environment settings
+- [ ] Containerization
+
+# Setup
+
+## Requirements
+
+* `python3.11` and `poetry` should be installed and visible on the path.
+
+```sh
+git clone git@github.com:erincar/vending-machine.git
+cd vending-machine
+poetry install
+```
+
+## Deployment
+
+### Local
+
+```sh
+poetry run python manage.py runserver 0.0.0.0:8000
+```
+
+### Test
+
+### Production
+
+
+## Testing
+
+### Unit tests
+
+
+## Development
+
+```sh
+python manage.py createsuperuser --username=admin --email=admin@example.com
+# You will be prompted to set a password
+```
