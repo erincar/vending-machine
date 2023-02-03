@@ -25,9 +25,15 @@ class VendingMachineUser(models.Model):
         help_text=_("The role of the user in the vending machine system."),
     )
 
+    def delete(self, *args, **kwargs):
+        self.user.delete()
+        return super(self.__class__, self).delete(*args, **kwargs)
+
 
 class Product(models.Model):
-    seller = models.ForeignKey(VendingMachineUser, on_delete=models.PROTECT)
+    seller = models.ForeignKey(
+        VendingMachineUser, on_delete=models.PROTECT, related_name="products"
+    )
     name = models.CharField(
         verbose_name=_("Product Name"),
         max_length=80,
