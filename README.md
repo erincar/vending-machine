@@ -32,6 +32,7 @@ Vending Machine API implementation for the MVP Match backend assignment.
 git clone git@github.com:erincar/vending-machine.git
 cd vending-machine
 poetry install
+poetry run python manage.py migrate
 ```
 
 ## Deployment
