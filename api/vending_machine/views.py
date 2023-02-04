@@ -17,7 +17,10 @@ class UserView(viewsets.ModelViewSet):
             case "create":
                 self.permission_classes = []
             case "retrieve":
-                self.permission_classes = [permissions.IsAuthenticated]
+                self.permission_classes = [
+                    permissions.IsAuthenticated,
+                    permissions.IsAdminUser | IsOwnUser,
+                ]
             case "update" | "partial_update" | "destroy":
                 self.permission_classes = [
                     permissions.IsAuthenticated,

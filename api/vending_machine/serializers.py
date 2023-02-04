@@ -13,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = VendingMachineUser
         fields = ["id", "username", "password", "deposit", "role"]
-        read_only_fields = ["id", "username", "deposit", "role"]
+        read_only_fields = ["id", "username", "deposit"]
 
     def create(self, validated_data):
         try:
