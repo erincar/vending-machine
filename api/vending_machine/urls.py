@@ -39,4 +39,8 @@ urlpatterns = [
         ),
         name="product-detail",
     ),
+    # Deposit, Buy, Reset
+    path("deposit/", views.deposit, name="deposit"),
+    path("reset/", views.reset, name="reset"),
+    path("buy/", views.buy, name="buy"),
 ]
