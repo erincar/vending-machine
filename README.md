@@ -15,7 +15,7 @@ Vending Machine API implementation for the MVP Match backend assignment.
   - [x] `UserView`
   - [x] `DepositView`
   - [x] `BuyView`
-- [ ] Postman
+- [x] Postman
 
 ## Developer
 - [x] Add `check-all` script running all linter/formatters
