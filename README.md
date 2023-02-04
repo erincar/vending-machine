@@ -72,9 +72,13 @@ Moreover, as opposed to having a single source of settings, a shared settings fi
 On the usage scalability side, since there is no production environment, this requirement is skipped. However, the use of this API in production would require additional infrastructure such as containerization, a proper database such as PostgreSQL with a replica structure, a reverse proxy etc. would have to be implemented. In addition, i18n and l10n would need to be set as part of the pipeline.
 
 ## Security
-There are several changes to be made to ensure the security of the application. This includes several changes for cloud-stored environments such as `staging` and `production`, where we need to set the `ALLOWED_HOSTS`, `DEBUG` and other settings properly. In addition, any secret information should be moved to a secret provider instead of residing in the repository.
+There are several changes to be made to ensure the security of the application. This includes several changes for cloud environments such as `staging` and `production`, where we need to set the `ALLOWED_HOSTS`, `DEBUG` and other settings properly. In addition, any secret information should be moved to a secret provider instead of residing in the repository.
+
+Obviously, HTTPS should be used on the cloud environments.
 
 The data constraints enforced by the API are also assumed in the application logic, however the data can also be manipulated on different layers, e.g. through the Django shell, which could break the data integrity. These cases should also be handled in the application logic. One example is creating a `User` instance manually, and not creating the related `VendingMachineUser` object. This user would be allowed to make requests, but any Vending Machine User operation would fail.
+
+Last but not least, I implemented a `Basic Authentication` scheme that authenticates users with a `username, password` pair sent on each request. This is not the most secure scheme, and could be improved. Moreover, especially in the case we use this scheme, the HTTPS protocol must be used when transporting the requests.
 
 ## Maintainability
 As the API scales to more features and more endpoints, it becomes more difficult to be on top of the codebase. Therefore, an automatically generated API specification would be handy.
