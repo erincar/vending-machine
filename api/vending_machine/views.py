@@ -2,7 +2,7 @@ from rest_framework import decorators, permissions, status, viewsets
 from rest_framework.response import Response
 
 from .models import Product, VendingMachineUser
-from .permissions import IsOwner, IsOwnUser
+from .permissions import IsOwner, IsOwnUser, IsSeller
 from .serializers import ProductSerializer, UserSerializer
 
 
@@ -35,7 +35,12 @@ class ProductView(viewsets.ModelViewSet):
 
     def get_permissions(self):
         match self.action:
-            case "list" | "create" | "retrieve":
+            case "create":
+                self.permission_classes = [
+                    permissions.IsAuthenticated,
+                    IsSeller,
+                ]
+            case "list" | "retrieve":
                 self.permission_classes = [permissions.IsAuthenticated]
             case "update" | "partial_update" | "destroy":
                 self.permission_classes = [

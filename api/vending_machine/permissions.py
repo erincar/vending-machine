@@ -9,5 +9,11 @@ class IsOwnUser(permissions.BasePermission):
 class IsOwner(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         return (
-            request.user.role == "seller" and obj.seller.id == request.user.id
+            request.user.vendingmachineuser.role == "seller"
+            and obj.seller.id == request.user.vendingmachineuser.id
         )
+
+
+class IsSeller(permissions.BasePermission):
+    def has_permission(self, request, view):
+        return request.user.vendingmachineuser.role == "seller"
